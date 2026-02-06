@@ -2,12 +2,28 @@ import pets from "./data/pets";
 import { useState } from "react";
 import AddNewPets from "./components/addNewPets";
 import FavoritePets from "./components/favoritePets";
+import UpdatePets from "./components/updatePets";
 
 function App() {
   const [esaPets, setEsaPets] = useState(pets);
 
   const handleAddPet = (newPet) => {
-    setEsaPets([...esaPets, newPet]);
+    const isExist = esaPets.some((pet) => pet.name === "Rino");
+    if (!isExist) {
+      setEsaPets([...esaPets, newPet]);
+    } else {
+      alert("Rino sudah ada di daftar hewan peliharaan.");
+    }
+  };
+
+  const handleReplaceBreed = () => {
+    const updatedPets = esaPets.map((pet) => {
+      if (pet.species === "Cat" && pet.breed === "Persian") {
+        return { ...pet, breed: "Maine Coon" };
+      }
+      return pet;
+    });
+    setEsaPets(updatedPets);
   };
 
   return (
@@ -29,6 +45,7 @@ function App() {
         </ul>
         <AddNewPets onAddPet={handleAddPet} />
         <FavoritePets pets={esaPets} />
+        <UpdatePets onUpdatePet={handleReplaceBreed} />
       </div>
     </>
   );
