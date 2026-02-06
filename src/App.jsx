@@ -3,6 +3,7 @@ import { useState } from "react";
 import AddNewPets from "./components/addNewPets";
 import FavoritePets from "./components/favoritePets";
 import UpdatePets from "./components/updatePets";
+import CountPetsBasedOnSpecies from "./components/countPets";
 
 function App() {
   const [esaPets, setEsaPets] = useState(pets);
@@ -46,6 +47,7 @@ function App() {
         <AddNewPets onAddPet={handleAddPet} />
         <FavoritePets pets={esaPets} />
         <UpdatePets onUpdatePet={handleReplaceBreed} />
+        <CountPetsBasedOnSpecies pets={esaPets} />
       </div>
     </>
   );
