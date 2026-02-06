@@ -1,6 +1,7 @@
 import pets from "./data/pets";
 import { useState } from "react";
 import AddNewPets from "./components/addNewPets";
+import FavoritePets from "./components/favoritePets";
 
 function App() {
   const [esaPets, setEsaPets] = useState(pets);
@@ -27,6 +28,7 @@ function App() {
           ))}
         </ul>
         <AddNewPets onAddPet={handleAddPet} />
+        <FavoritePets pets={esaPets} />
       </div>
     </>
   );
