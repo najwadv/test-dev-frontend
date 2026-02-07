@@ -39,7 +39,7 @@ export const calcEvenNumbers = (arr) => {
   };
 };
 
-// Helper function for check Anagram
+// Helper function for check checkAnagram.jsx
 export const checkAnagram = (word1, word2) => {
   const cleanWord1 = word1.toLowerCase().replace(/[^a-z0-9]/g, "");
   const cleanWord2 = word2.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -60,4 +60,63 @@ export const checkAnagram = (word1, word2) => {
     charCount[char] -= 1;
   }
   return true;
+};
+
+// Helper function for transform data JSON
+export const transformJsonData = (dataJson) => {
+  const source = dataJson.data;
+  const result = {
+    total: 0,
+    data: [],
+  };
+  const groupedData = {};
+
+  source.forEach((item) => {
+    result.total += item.total;
+
+    if (!groupedData[item.category]) {
+      groupedData[item.category] = {
+        category: item.category,
+        total: 0,
+        data: {},
+      };
+    }
+
+    const catNow = groupedData[item.category];
+    catNow.total += item.total;
+
+    if (!catNow.data[item.code]) {
+      catNow.data[item.code] = {
+        total: 0,
+        data: [],
+      };
+    }
+
+    const codeNow = catNow.data[item.code];
+    codeNow.total += item.total;
+    codeNow.data.push({
+      name: item.name,
+      total: item.total,
+    });
+
+    codeNow.data.sort((a, b) => a.name.localeCompare(b.name));
+  });
+  const sortedCat = Object.keys(groupedData).sort();
+  result.data = sortedCat.map((catName) => {
+    const catObject = groupedData[catName];
+
+    const sortedCode = Object.keys(catObject.data).sort();
+    const sortedDataCode = {};
+
+    sortedCode.forEach((code) => {
+      sortedDataCode[code] = catObject.data[code];
+    });
+
+    return {
+      category: catObject.category,
+      total: catObject.total,
+      data: sortedDataCode,
+    };
+  });
+  return result;
 };
