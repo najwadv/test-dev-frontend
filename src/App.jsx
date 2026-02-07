@@ -4,16 +4,17 @@ import AddNewPets from "./components/addNewPets";
 import FavoritePets from "./components/favoritePets";
 import UpdatePets from "./components/updatePets";
 import CountPetsBasedOnSpecies from "./components/countPets";
+import IsPalindrome from "./components/isPalindrome";
 
 function App() {
   const [esaPets, setEsaPets] = useState(pets);
 
   const handleAddPet = (newPet) => {
-    const isExist = esaPets.some((pet) => pet.name === "Rino");
+    const isExist = esaPets.some((pet) => pet.name === newPet.name);
     if (!isExist) {
       setEsaPets([...esaPets, newPet]);
     } else {
-      alert("Rino sudah ada di daftar hewan peliharaan.");
+      alert(`${newPet.name} sudah ada di daftar hewan peliharaan.`);
     }
   };
 
@@ -48,6 +49,7 @@ function App() {
         <FavoritePets pets={esaPets} />
         <UpdatePets onUpdatePet={handleReplaceBreed} />
         <CountPetsBasedOnSpecies pets={esaPets} />
+        <IsPalindrome pets={esaPets} />
       </div>
     </>
   );
