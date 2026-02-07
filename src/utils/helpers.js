@@ -21,3 +21,20 @@ export const getPalindrome = (name) => {
     nameLength: name.length,
   };
 };
+
+// Helper function for file evenNumbers.jsx
+export const calcEvenNumbers = (arr) => {
+  const array = arr || [];
+  const even = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 === 0) {
+      even.push(arr[i]);
+    }
+  }
+  const total = even.reduce((acc, num) => acc + num, 0);
+
+  return {
+    total: total,
+    evenNumbers: even,
+  };
+};

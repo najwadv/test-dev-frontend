@@ -5,6 +5,7 @@ import FavoritePets from "./components/favoritePets";
 import UpdatePets from "./components/updatePets";
 import CountPetsBasedOnSpecies from "./components/countPets";
 import IsPalindrome from "./components/isPalindrome";
+import EvenNumbers from "./components/evenNumbers";
 
 function App() {
   const [esaPets, setEsaPets] = useState(pets);
@@ -50,6 +51,7 @@ function App() {
         <UpdatePets onUpdatePet={handleReplaceBreed} />
         <CountPetsBasedOnSpecies pets={esaPets} />
         <IsPalindrome pets={esaPets} />
+        <EvenNumbers numbers={[15, 18, 3, 9, 6, 2, 12, 14]} />
       </div>
     </>
   );
