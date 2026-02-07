@@ -38,3 +38,26 @@ export const calcEvenNumbers = (arr) => {
     evenNumbers: even,
   };
 };
+
+// Helper function for check Anagram
+export const checkAnagram = (word1, word2) => {
+  const cleanWord1 = word1.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const cleanWord2 = word2.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  if (cleanWord1.length !== cleanWord2.length) {
+    return false;
+  }
+
+  const charCount = {};
+  for (const char of cleanWord1) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  for (const char of cleanWord2) {
+    if (!charCount[char]) {
+      return false;
+    }
+    charCount[char] -= 1;
+  }
+  return true;
+};
