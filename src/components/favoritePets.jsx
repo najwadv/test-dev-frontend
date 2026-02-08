@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 export default function FavoritePets({ pets }) {
   const [direction, setDirection] = useState("asc");
@@ -14,19 +15,22 @@ export default function FavoritePets({ pets }) {
   };
 
   return (
-    <div>
-      <h4>Instruksi 3: Mengurutkan hewan kesayangan Esa</h4>
-      <button onClick={toggleSort}>
-        Urutkan: {direction === "asc" ? "Z-A" : "A-Z"}
-      </button>
-      <ul>
+    <div className="flex flex-col">
+      <div className="space-y-2 mb-6 text-stone-300">
         {sortedPets.map((pet, index) => (
           <li key={index}>
-            {pet.name} - {pet.species} - {pet.breed} - {pet.characteristic}
+            {pet.name}, {pet.species}, {pet.breed}, {pet.characteristic}
           </li>
         ))}
-      </ul>
-      <p>Jumlah hewan kesayangan: {sortedPets.length}</p>
+      </div>
+      <p className="text-center font-semibold mb-6">
+        Jumlah hewan kesayangan: {sortedPets.length}
+      </p>
+      <div className="flex justify-center w-full">
+        <Button onClick={toggleSort} variant="primary" className="px-10 py-3">
+          Sort {direction === "asc" ? "Descending" : "Ascending"}
+        </Button>
+      </div>
     </div>
   );
 }

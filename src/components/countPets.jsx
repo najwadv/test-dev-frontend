@@ -5,14 +5,13 @@ export default function CountPetsBasedOnSpecies({ pets }) {
 
   return (
     <div>
-      <h4>Instruksi 5: Menghitung hewan peliharaan Esa berdasarkan spesies</h4>
-      <ul>
+      <div className="space-y-2 mb-6 text-stone-300 font-semibold">
         {Object.entries(countPetsBySpecies).map(([species, count]) => (
-          <li key={species}>
+          <div key={species}>
             {species}: {count}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

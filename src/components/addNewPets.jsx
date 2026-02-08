@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 export default function AddNewPets({ onAddPet }) {
   const handleClick = () => {
     const rino = {
@@ -13,8 +15,11 @@ export default function AddNewPets({ onAddPet }) {
 
   return (
     <div>
-      <h4>Instruksi 2: Menambahkan Rino</h4>
-      <button onClick={handleClick}>Tambahkan Rino</button>
+      <div className="flex justify-center w-full">
+        <Button onClick={handleClick} variant="primary" className="px-10 py-3">
+          Add Rino
+        </Button>
+      </div>
     </div>
   );
 }

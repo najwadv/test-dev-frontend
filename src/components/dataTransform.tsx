@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { transformJsonData } from "../utils/helpers";
 import rawData from "../assets/json/case.json";
+import TerminalContainer from "./terminalContainer";
 
 export default function DataTransform() {
   const [transformedData, setTransformedData] = useState({});
@@ -14,20 +15,9 @@ export default function DataTransform() {
 
   return (
     <div>
-      <h4>Instruksi 9: Transformasi JSON</h4>
-      <div
-        style={{
-          backgroundColor: "#4C5762",
-          padding: "15px",
-          borderRadius: "5px",
-        }}
-      >
-        <pre>
-          {transformedData
-            ? JSON.stringify(transformedData, null, 4)
-            : "Loading..."}
-        </pre>
-      </div>
+      <TerminalContainer>
+        {JSON.stringify(transformedData, null, 4)}
+      </TerminalContainer>
     </div>
   );
 }

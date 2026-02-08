@@ -5,10 +5,11 @@ export default function EvenNumbers({ numbers }) {
 
   return (
     <div>
-      <h4>Instruksi 7: Menjumlah dan menampilkan bilangan genap </h4>
-      <p>Array awal: {numbers.join(", ")}</p>
-      <p>Bilangan genap: {evenNumbers.join(", ")}</p>
-      <p>Jumlah bilangan genap: {total}</p>
+      <p className="text-stone-400 text-lg mb-8">
+        Initiated Array: {numbers.join(", ")}
+      </p>
+      <p className="font-semibold">Even Numbers: {evenNumbers.join(", ")}</p>
+      <p className="font-semibold">Total Even Numbers: {total}</p>
     </div>
   );
 }

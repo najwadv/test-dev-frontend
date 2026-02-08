@@ -8,10 +8,13 @@ export default function CheckAnagram() {
 
   return (
     <div>
-      <h4>Instruksi 7: Memeriksa Anagram</h4>
-      <p>Kata pertama: {word1}</p>
-      <p>Kata kedua: {word2}</p>
-      <p>{isAnagram ? "String ini anagram." : "Bukan string anagram!"}</p>
+      <p className="text-stone-400 text-lg">Kata pertama: {word1}</p>
+      <p className="text-stone-400 text-lg mb-8">Kata kedua: {word2}</p>
+      <p className="font-semibold">
+        {isAnagram
+          ? "These strings are anagrams!"
+          : "These strings are not anagrams!"}
+      </p>
     </div>
   );
 }
